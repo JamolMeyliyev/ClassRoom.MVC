@@ -1,0 +1,12 @@
+﻿@using ClassRoom.MVCP.Helper;
+@model ClassRoomData.Entities.School;
+@inject UserHelper UserHelper
+
+@{
+    var userId = UserHelper.UserId;
+    var isUserExistsInSchool = Model.UserSchools.Any(user => user.User.Id == userId);
+    if (!isUserExistsInSchool)
+    {
+        <a  class="btn btn-primary" asp-action="JoinSchool" asp-route-id ="@Model.Id"> Join </a>
+    }
+}
